@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meta Business Setup Guide — Lead Gen — Digital Giants</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dg-blue: #1E73BE;
+    --dg-navy: #081228;
+    --dg-mid-blue: #476AB2;
+    --dg-light-blue: #F4F8FF;
+    --dg-text: #222222;
+    --dg-text-light: #667085;
+    --dg-border: #E2E8F0;
+    --dg-success: #10B981;
+    --dg-warning: #F59E0B;
+    --dg-white: #FFFFFF;
+    --shadow-sm: 0 1px 3px rgba(8,18,40,0.06);
+    --shadow-md: 0 4px 16px rgba(8,18,40,0.08);
+    --shadow-lg: 0 8px 32px rgba(8,18,40,0.12);
+    --radius: 12px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--dg-text);
+    background: #F0F4F8;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(135deg, var(--dg-navy) 0%, #0F2847 50%, var(--dg-blue) 100%);
+    color: var(--dg-white);
+    padding: 60px 40px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(30,115,190,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(71,106,178,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.18);
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    backdrop-filter: blur(8px);
+  }
+  .hero h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .hero p {
+    font-size: 17px;
+    opacity: 0.85;
+    max-width: 620px;
+    line-height: 1.7;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 28px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  .hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    opacity: 0.75;
+  }
+  .hero-meta-item svg { opacity: 0.6; flex-shrink: 0; }
+
+  /* ── Container ── */
+  .container {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── Intro bar ── */
+  .intro-bar {
+    background: var(--dg-white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    padding: 28px 32px;
+    margin: -28px 24px 36px;
+    max-width: 840px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 2;
+    border-left: 4px solid var(--dg-blue);
+  }
+  .intro-bar h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--dg-blue);
+    margin-bottom: 8px;
+  }
+  .intro-bar p {
+    font-size: 14.5px;
+    color: var(--dg-text-light);
+  }
+
+  /* ── Info callout ── */
+  .info-callout {
+    background: var(--dg-white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: 22px 28px;
+    margin: 0 auto 28px;
+    max-width: 840px;
+    border: 1px solid #BFE0FF;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .info-callout svg { flex-shrink: 0; margin-top: 2px; color: var(--dg-blue); }
+  .info-callout p { font-size: 14px; color: var(--dg-text-light); margin: 0; }
+  .info-callout strong { color: var(--dg-text); }
+
+  /* ── Progress tracker ── */
+  .progress-section {
+    margin: 0 auto 36px;
+    max-width: 840px;
+    padding: 0 24px;
+  }
+  .progress-bar-outer {
+    background: var(--dg-border);
+    border-radius: 100px;
+    height: 8px;
+    overflow: hidden;
+  }
+  .progress-bar-inner {
+    background: linear-gradient(90deg, var(--dg-blue), var(--dg-mid-blue));
+    height: 100%;
+    width: 0%;
+    border-radius: 100px;
+    transition: width 0.4s ease;
+  }
+  .progress-label {
+    font-size: 13px;
+    color: var(--dg-text-light);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  /* ── Step cards ── */
+  .step-card {
+    background: var(--dg-white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    border: 1px solid var(--dg-border);
+  }
+  .step-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+  .step-card.completed {
+    border-color: var(--dg-success);
+  }
+  .step-card.completed .step-number { background: var(--dg-success); }
+
+  .step-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px 28px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .step-number {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: var(--dg-blue);
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .step-title-area { flex: 1; }
+  .step-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--dg-text);
+    margin-bottom: 3px;
+  }
+  .step-subtitle {
+    font-size: 13.5px;
+    color: var(--dg-text-light);
+  }
+  .step-time {
+    font-size: 12px;
+    color: var(--dg-text-light);
+    background: var(--dg-light-blue);
+    padding: 4px 10px;
+    border-radius: 100px;
+    white-space: nowrap;
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .step-chevron {
+    flex-shrink: 0;
+    margin-top: 8px;
+    transition: transform 0.25s ease;
+    color: var(--dg-text-light);
+  }
+  .step-card.open .step-chevron { transform: rotate(180deg); }
+
+  .step-body {
+    display: none;
+    padding: 0 28px 24px;
+    padding-left: 84px;
+  }
+  .step-card.open .step-body { display: block; }
+
+  .step-body p {
+    font-size: 14.5px;
+    color: #444;
+    margin-bottom: 14px;
+    line-height: 1.75;
+  }
+
+  .step-body .why-box {
+    background: #FFFBEB;
+    border: 1px solid #FDE68A;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+  }
+  .why-box strong {
+    color: #B45309;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .why-box p {
+    margin: 6px 0 0;
+    font-size: 13.5px;
+    color: #92400E;
+  }
+
+  .step-body .tip-box {
+    background: #ECFDF5;
+    border: 1px solid #A7F3D0;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+  }
+  .tip-box strong {
+    color: #065F46;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .tip-box p {
+    margin: 6px 0 0;
+    font-size: 13.5px;
+    color: #064E3B;
+  }
+
+  .step-body .dg-handles-box {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+  }
+  .dg-handles-box strong {
+    color: #1E40AF;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .dg-handles-box p {
+    margin: 6px 0 0;
+    font-size: 13.5px;
+    color: #1E3A8A;
+  }
+
+  .help-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--dg-light-blue);
+    color: var(--dg-blue);
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.2s;
+    margin-top: 4px;
+    word-break: break-all;
+  }
+  .help-link:hover { background: #E0EDFF; }
+  .help-link svg { flex-shrink: 0; }
+
+  .substep-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 14px;
+  }
+  .substep-list li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #555;
+  }
+  .substep-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--dg-mid-blue);
+    opacity: 0.5;
+  }
+
+  /* ── Checkbox ── */
+  .step-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--dg-border);
+  }
+  .step-check input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--dg-success);
+    cursor: pointer;
+  }
+  .step-check label {
+    font-size: 13.5px;
+    color: var(--dg-text-light);
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  /* ── Final CTA ── */
+  .final-section {
+    background: var(--dg-white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    margin: 12px auto 36px;
+    max-width: 840px;
+    padding: 36px 32px;
+    text-align: center;
+    border: 2px solid var(--dg-blue);
+  }
+  .final-section h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--dg-navy);
+    margin-bottom: 10px;
+  }
+  .final-section p {
+    font-size: 15px;
+    color: var(--dg-text-light);
+    max-width: 580px;
+    margin: 0 auto 20px;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 32px 24px;
+    color: var(--dg-text-light);
+    font-size: 13px;
+  }
+  .footer a { color: var(--dg-blue); text-decoration: none; }
+
+  /* ── Print styles ── */
+  @media print {
+    body { background: white; }
+    .step-body { display: block !important; }
+    .step-card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+    .hero { background: var(--dg-navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 640px) {
+    .hero { padding: 40px 20px 36px; }
+    .hero h1 { font-size: 26px; }
+    .intro-bar { margin: -20px 16px 28px; padding: 20px 22px; }
+    .step-header { padding: 18px 20px; }
+    .step-body { padding: 0 20px 20px; padding-left: 20px; }
+    .step-number { width: 34px; height: 34px; font-size: 14px; }
+    .hero-meta { gap: 16px; }
+    .final-section { padding: 28px 20px; }
+    .info-callout { flex-direction: column; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════ HERO ════════ -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Client Onboarding Guide &mdash; Lead Generation</div>
+    <h1>Meta Business Setup<br>for Lead Generation</h1>
+    <p>Everything you need to set up your Meta Business account correctly — so your lead generation campaigns launch smoothly from day one. We'll build the landing page for you, but we need a few things set up on your end first.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Est. 30–45 minutes
+      </div>
+      <div class="hero-meta-item">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        10 Steps
+      </div>
+      <div class="hero-meta-item">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Prepared by Digital Giants
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ INTRO BAR ════════ -->
+<div class="container">
+<div class="intro-bar">
+  <h2>Why does this matter?</h2>
+  <p>A correctly configured Meta Business account is the foundation of every successful lead generation campaign. Skipping steps or misconfiguring settings can result in ad account restrictions, tracking failures, and wasted ad spend. Follow each step in order — we've included clear instructions and links to Meta's official guides throughout.</p>
+</div>
+</div>
+
+<!-- ════════ INFO CALLOUT ════════ -->
+<div class="container">
+<div class="info-callout">
+  <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+  <p><strong>About your setup:</strong> Because Digital Giants is building your landing page, you won't need to worry about connecting a website platform (like Shopify or WordPress) or setting up a product catalog. We'll handle the pixel installation, Conversions API, and all tracking on the landing page we build for you. Your job is to get the Meta Business foundations set up — we'll take care of the rest.</p>
+</div>
+</div>
+
+<!-- ════════ PROGRESS ════════ -->
+<div class="progress-section">
+  <div class="progress-label"><span id="progress-text">0 of 10 steps completed</span></div>
+  <div class="progress-bar-outer">
+    <div class="progress-bar-inner" id="progress-bar"></div>
+  </div>
+</div>
+
+<!-- ════════ STEPS ════════ -->
+<div class="container" id="steps-container">
+
+  <!-- Step 1 -->
+  <div class="step-card open" data-step="1">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-number">1</div>
+      <div class="step-title-area">
+        <div class="step-title">Create a Meta Business Account</div>
+        <div class="step-subtitle">Set up your Business Manager at business.facebook.com</div>
+      </div>
+      <div class="step-time">~5 min</div>
+      <svg class="step-chevron" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="step-body">
+      <p>Meta Business Manager (now part of Meta Business Suite) is the centralised hub where all your business assets live — your Pages, ad accounts, pixels, and more. Creating one is the essential first step.</p>
+      <p>Visit <strong>business.facebook.com</strong> and click "Create Account." You'll need a personal Facebook profile to get started (this is for identity verification only — your personal profile won't be visible to the public in your business account).</p>
+      <div class="why-box">
+        <strong>Why this matters</strong>
+        <p>Without a Business Manager, you can't run ads professionally, control access for team members or agencies, or use advanced features like the Conversions API. It also protects your business assets — keeping them separate from any personal Facebook profile.</p>
+      </div>
+      <a class="help-link" href="https://www.facebook.com/business/help/1710077379203657?id=180505742745347" target="_blank">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Meta's Official Guide: Create a Business Account
+      </a>
+      <div class="step-check">
+        <input type="checkbox" id="check1" onchange="updateProgress()">
+        <label for="check1">I've created my Meta Business Account</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="step-card" data-step="2">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-number">2</div>
+      <div class="step-title-area">
+        <div class="step-title">Enable Two-Factor Authentication (2FA)</div>
+        <div class="step-subtitle">Secure your account before adding any assets</div>
+      </div>
+      <div class="step-time">~3 min</div>
+      <svg class="step-chevron" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="step-body">
+      <p>Before going any further, enable two-factor authentication on your personal Facebook account that's linked to Business Manager. Meta now requires 2FA for accounts running ads, and it's essential for protecting your business from unauthorised access.</p>
+      <p>Go to your Facebook Settings &rarr; Security and Login &rarr; Two-Factor Authentication. Choose an authentication app (such as Google Authenticator or Authy) for the most secure option.</p>
+      <div class="why-box">
+        <strong>Why this matters</strong>
+        <p>Ad accounts are high-value targets for hackers. If someone gains access to your account, they can run ads using your payment method and drain your budget. 2FA adds a critical layer of protection — and Meta may restrict ad delivery if it's not enabled.</p>
+      </div>
+      <div class="tip-box">
+        <strong>Pro Tip</strong>
+        <p>Save the backup codes Meta provides during setup. Store them somewhere secure (like a password manager) — you'll need them if you ever lose access to your authenticator app.</p>
+      </div>
+      <a class="help-link" href="https://www.facebook.com/help/148233965247823" target="_blank">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Meta's Official Guide: Set Up Two-Factor Authentication
+      </a>
+      <div class="step-check">
+        <input type="checkbox" id="check2" onchange="updateProgress()">
+        <label for="check2">Two-factor authentication is enabled</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="step-card" data-step="3">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-number">3</div>
+      <div class="step-title-area">
+        <div class="step-title">Connect Your Facebook Page, Instagram &amp; Threads</div>
+        <div class="step-subtitle">Link your social profiles to Business Manager</div>
+      </div>
+      <div class="step-time">~5 min</div>
+      <svg class="step-chevron" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="step-body">
+      <p>Your Facebook Page and Instagram account are required to run ads. In Business Manager, navigate to <strong>Settings &rarr; Accounts &rarr; Pages</strong> and add your Facebook Page. Then go to <strong>Instagram Accounts</strong> to connect your Instagram profile. If you use Threads, connect that as well.</p>
+      <p>If you don't have a Facebook Page yet, you can create one directly from within Business Manager.</p>
+      <div class="why-box">
+        <strong>Why this matters</strong>
+        <p>Lead generation ads appear under your Page and Instagram identity. If these aren't connected to Business Manager, you won't be able to create or manage ads properly — and your agency won't be able to run campaigns on your behalf.</p>
+      </div>
+      <a class="help-link" href="https://www.facebook.com/business/help/720478807965744" target="_blank">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Meta's Official Guide: Connect Pages &amp; Instagram
+      </a>
+      <div class="step-check">
+        <input type="checkbox" id="check3" onchange="updateProgress()">
+        <label for="check3">Facebook Page, Instagram, and Threads are connected</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 4 -->
+  <div class="step-card" data-step="4">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-number">4</div>
+      <div class="step-title-area">
+        <div class="step-title">Add a Backup Admin to Business Manager</div>
+        <div class="step-subtitle">Protect your account from lockout</div>
+      </div>
+      <div class="step-time">~3 min</div>
+      <svg class="step-chevron" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="step-body">
+      <p>Add at least one additional person as a <strong>full admin</strong> to your Business Manager. This should be someone you trust completely — a business partner, spouse, or close family member.</p>
+      <p>Go to <strong>Business Settings &rarr; Users &rarr; People</strong>, click "Add People," and enter their email address. Assign them the "Full Control" (Admin) role.</p>
+      <div class="why-box">
+        <strong>Why this matters</strong>
+        <p>If your personal Facebook account is ever hacked, disabled, or locked out, you lose access to everything in Business Manager — your ad account, pixel data, audience data, and more. A backup admin ensures your business can still operate even if something happens to your primary account. We've seen this happen more than you'd think.</p>
+      </div>
+      <a class="help-link" href="https://www.facebook.com/business/help/2169003770027706?id=2190812977867143" target="_blank">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Meta's Official Guide: Add People to Business Manager
+      </a>
+      <div class="step-check">
+        <input type="checkbox" id="check4" onchange="updateProgress()">
+        <label for="check4">A backup admin has been added</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 5 -->
+  <div class="step-card" data-step="5">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-number">5</div>
+      <div class="step-title-area">
+        <div class="step-title">Create an Ad Account &amp; Add Payment</div>
+        <div class="step-subtitle">Set up billing so your campaigns can go live</div>
+      </div>
+      <div class="step-time">~5 min</div>
+      <svg class="step-chevron" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="step-body">
+      <p>Inside Business Manager, go to <strong>Settings &rarr; Accounts &rarr; Ad Accounts</strong> and create a new ad account. Set your time zone to your local Australian time zone, currency to AUD, and give it a clear name (e.g., "[Your Business Name] — Lead Gen").</p>
+      <p>Once the ad account is created, go to <strong>Payment Settings</strong> and add a valid credit card or payment method. Meta requires a payment method on file before any ads can be delivered.</p>
+      <div class="tip-box">
+        <strong>Pro Tip</strong>
+        <p>Use a business credit card rather than a personal one. Set up spending limits on the ad account as a safety net — you can always increase them later. This protects you from unexpected spend if something goes wrong.</p>
+      </div>
+      <a class="help-link" href="https://www.facebook.com/business/help/915885887059947" target="_blank">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Meta's Official Guide: Create an Ad Account
+      </a>
+      <div class="step-check">
+        <input type="checkbox" id="check5" onchange="updateProgress()">
+        <label for="check5">Ad account created and payment method added</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 6 -->
+  <div class="step-card" data-step="6">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-number">6</div>
+      <div class="step-title-area">
+        <div class="step-title">Update Your Business Information &amp; Verify</div>
+        <div class="step-subtitle">Complete your business details and start the verification process</div>
+      </div>
+      <div class="step-time">~5 min</div>
+      <svg class="step-chevron" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="step-body">
+      <p>Navigate to <strong>Business Settings &rarr; Business Info</strong> and fill in all fields: your legal business name, address, phone number, website URL, and business email. Make sure everything matches your official business registration.</p>
+      <p>Once your details are complete, Meta may prompt you to verify your business. Head to <strong>Security Centre</strong> in Business Settings to start the verification process. You'll need to provide supporting documents such as a business registration certificate, utility bill, or ABN lookup confirmation.</p>
+      <div class="why-box">
+        <strong>Why this matters</strong>
+        <p>Meta uses this information for business verification and to comply with advertising transparency laws. Incomplete or inaccurate details can delay ad approvals, trigger account reviews, or even get your account restricted. Verified businesses also unlock higher spending limits and access to additional features.</p>
+      </div>
+      <a class="help-link" href="https://www.facebook.com/business/help/2058515294227817" target="_blank">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Meta's Official Guide: Verify Your Business
+      </a>
+      <div class="step-check">
+        <input type="checkbox" id="check6" onchange="updateProgress()">
+        <label for="check6">Business information has been updated</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 7 -->
+  <div class="step-card" data-step="7">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-number">7</div>
+      <div class="step-title-area">
+        <div class="step-title">Create a Meta Pixel</div>
+        <div class="step-subtitle">We'll install it on your landing page — you just need to create it</div>
+      </div>
+      <div class="step-time">~3 min</div>
+      <svg class="step-chevron" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="step-body">
+      <p>The Meta Pixel tracks visitor actions on your landing page — page views, form submissions, button clicks, and more. You need to create the pixel in your Business Manager so we can install it on the landing page we build for you.</p>
+      <p>Go to <strong>Events Manager &rarr; Connect Data Sources &rarr; Web &rarr; Meta Pixel</strong> and create a new pixel. Give it a clear name (e.g., "[Your Business Name] — Lead Gen Pixel").</p>
+      <div class="dg-handles-box">
+        <strong>We'll Handle the Rest</strong>
+        <p>You only need to create the pixel — Digital Giants will install it on your landing page, configure all conversion events (such as Lead and Contact form submissions), and set up the Conversions API for server-side tracking. We'll make sure everything is firing correctly before your campaigns go live.</p>
+      </div>
+      <a class="help-link" href="https://www.facebook.com/business/help/314143995668266?id=120537668283142" target="_blank">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Meta's Official Guide: Create a Meta Pixel
+      </a>
+      <div class="step-check">
+        <input type="checkbox" id="check7" onchange="updateProgress()">
+        <label for="check7">Meta Pixel has been created</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 8 -->
+  <div class="step-card" data-step="8">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-number">8</div>
+      <div class="step-title-area">
+        <div class="step-title">Add &amp; Verify Your Domain</div>
+        <div class="step-subtitle">Prove ownership of your website domain to Meta</div>
+      </div>
+      <div class="step-time">~10 min</div>
+      <svg class="step-chevron" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="step-body">
+      <p>In Business Manager, go to <strong>Brand Safety &rarr; Domains</strong> and add the domain where your landing page will live. If you have an existing website domain, add that. If we're hosting your landing page on a subdomain or new domain, we'll confirm the correct domain with you before this step.</p>
+      <p>Meta will ask you to verify ownership using one of three methods: adding a DNS TXT record (recommended), uploading an HTML file to your site, or adding a meta tag to your homepage.</p>
+      <div class="why-box">
+        <strong>Why this matters</strong>
+        <p>Domain verification is required for configuring conversion events under Apple's Aggregated Event Measurement (AEM) protocol. Without it, you're limited in how many pixel events you can optimise for, and your conversion tracking on iOS devices will be significantly impaired.</p>
+      </div>
+      <div class="tip-box">
+        <strong>Pro Tip</strong>
+        <p>The DNS TXT record method is the most reliable. If you're not comfortable doing this yourself, just let us know and we can walk you through it or handle it directly if we have access to your domain registrar.</p>
+      </div>
+      <a class="help-link" href="https://www.facebook.com/business/help/321167023127050" target="_blank">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Meta's Official Guide: Verify Your Domain
+      </a>
+      <div class="step-check">
+        <input type="checkbox" id="check8" onchange="updateProgress()">
+        <label for="check8">Domain has been added and verified</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 9 -->
+  <div class="step-card" data-step="9">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-number">9</div>
+      <div class="step-title-area">
+        <div class="step-title">Assign Yourself to All Assets</div>
+        <div class="step-subtitle">Ensure you have full access to everything you've created</div>
+      </div>
+      <div class="step-time">~3 min</div>
+      <svg class="step-chevron" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="step-body">
+      <p>After creating all your assets, make sure your user account (and any backup admins) are assigned to every asset in Business Manager. Go to <strong>Business Settings &rarr; Users &rarr; People</strong>, select your name, and verify you have access to all Pages, ad accounts, pixels, and domains.</p>
+      <div class="why-box">
+        <strong>Why this matters</strong>
+        <p>It's a common oversight — you can create an asset but not automatically be assigned to it with the right permissions. Checking this now prevents issues later when we begin setting up and managing your campaigns.</p>
+      </div>
+      <a class="help-link" href="https://www.facebook.com/business/help/325571851329683?id=2190812977867143" target="_blank">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Meta's Official Guide: Assign People to Assets
+      </a>
+      <div class="step-check">
+        <input type="checkbox" id="check9" onchange="updateProgress()">
+        <label for="check9">I'm assigned to all assets with full access</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 10 -->
+  <div class="step-card" data-step="10">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-number">10</div>
+      <div class="step-title-area">
+        <div class="step-title">Grant Digital Giants Partner Access</div>
+        <div class="step-subtitle">Share access so we can build your landing page and manage your campaigns</div>
+      </div>
+      <div class="step-time">~5 min</div>
+      <svg class="step-chevron" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="step-body">
+      <p>This is the final step — and it's how we get the access we need to build your landing page and manage your lead generation campaigns. In Business Manager, go to <strong>Business Settings &rarr; Users &rarr; Partners</strong>, click "Add," and enter the Digital Giants Partner ID shown below.</p>
+      <p>You'll need to share each of the following assets with us individually. For each asset, grant us the appropriate level of access (we'll guide you on the specifics).</p>
+      <div style="background: var(--dg-navy); color: white; border-radius: 10px; padding: 24px; text-align: center; margin: 16px 0;">
+        <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.6; margin-bottom: 8px; font-weight: 600;">Digital Giants Partner ID</div>
+        <div id="partner-id-display" style="font-family: 'Plus Jakarta Sans', monospace; font-size: 28px; font-weight: 800; letter-spacing: 3px; margin-bottom: 14px;">404809626610707</div>
+        <button onclick="copyPartnerId()" id="copy-btn" style="background: var(--dg-blue); color: white; border: none; padding: 10px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px;">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          <span id="copy-text">Copy Partner ID</span>
+        </button>
+      </div>
+      <p style="font-weight: 600; margin-bottom: 8px;">Share these assets with us:</p>
+      <ul class="substep-list">
+        <li>Facebook Page</li>
+        <li>Instagram Page</li>
+        <li>Ad Account</li>
+        <li>Pixel</li>
+        <li>Domain</li>
+      </ul>
+      <a class="help-link" href="https://www.facebook.com/business/help/708679622611131" target="_blank">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Meta's Official Guide: Share Assets with a Partner
+      </a>
+      <div class="step-check">
+        <input type="checkbox" id="check10" onchange="updateProgress()">
+        <label for="check10">Digital Giants now has partner access to all assets</label>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════ FINAL SECTION ════════ -->
+<div class="container">
+<div class="final-section">
+  <h2>All Done? Let Us Know!</h2>
+  <p>Once you've completed all 10 steps, send us a quick message at <a href="mailto:info@digitalgiants.com.au" style="color:var(--dg-blue); font-weight:600;">info@digitalgiants.com.au</a> and we'll verify everything is set up correctly. From there, we'll build your landing page, install all tracking, and get your lead gen campaigns ready to launch.</p>
+  <div class="tip-box" style="text-align:left; max-width:520px; margin:20px auto 0;">
+    <strong>Need Help?</strong>
+    <p>If you get stuck on any step, don't worry — just reach out to your Digital Giants account manager and we'll walk you through it. We're here to make this as easy as possible.</p>
+  </div>
+</div>
+</div>
+
+<!-- ════════ FOOTER ════════ -->
+<div class="footer">
+  <p>&copy; 2026 <a href="https://digitalgiants.com.au" target="_blank">Digital Giants</a> &nbsp;·&nbsp; Meta Business Setup Guide &mdash; Lead Generation &nbsp;·&nbsp; <a href="mailto:info@digitalgiants.com.au">info@digitalgiants.com.au</a></p>
+</div>
+
+<script>
+function copyPartnerId() {
+  const id = '404809626610707';
+  navigator.clipboard.writeText(id).then(function() {
+    const btn = document.getElementById('copy-btn');
+    const txt = document.getElementById('copy-text');
+    btn.style.background = '#10B981';
+    txt.textContent = 'Copied!';
+    setTimeout(function() {
+      btn.style.background = '';
+      txt.textContent = 'Copy Partner ID';
+    }, 2000);
+  }).catch(function() {
+    var ta = document.createElement('textarea');
+    ta.value = id;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    var btn = document.getElementById('copy-btn');
+    var txt = document.getElementById('copy-text');
+    btn.style.background = '#10B981';
+    txt.textContent = 'Copied!';
+    setTimeout(function() {
+      btn.style.background = '';
+      txt.textContent = 'Copy Partner ID';
+    }, 2000);
+  });
+}
+
+function toggleStep(header) {
+  const card = header.closest('.step-card');
+  card.classList.toggle('open');
+}
+
+function updateProgress() {
+  const total = 10;
+  let checked = 0;
+  for (let i = 1; i <= total; i++) {
+    const cb = document.getElementById('check' + i);
+    const card = cb.closest('.step-card');
+    if (cb.checked) {
+      checked++;
+      card.classList.add('completed');
+    } else {
+      card.classList.remove('completed');
+    }
+  }
+  const pct = Math.round((checked / total) * 100);
+  document.getElementById('progress-bar').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = checked + ' of ' + total + ' steps completed';
+}
+</script>
+
+</body>
+</html>
