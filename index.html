@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Resources — Digital Giants</title>
+<meta name="description" content="Setup guides and resources for Digital Giants clients.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231E73BE'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-weight='bold' font-size='18' fill='white'>DG</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dg-blue: #1E73BE;
+    --dg-navy: #081228;
+    --dg-mid-blue: #476AB2;
+    --dg-light-blue: #F4F8FF;
+    --dg-text: #222222;
+    --dg-text-light: #667085;
+    --dg-border: #E2E8F0;
+    --dg-white: #FFFFFF;
+    --shadow-sm: 0 1px 3px rgba(8,18,40,0.06);
+    --shadow-md: 0 4px 16px rgba(8,18,40,0.08);
+    --radius: 12px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--dg-text);
+    background: #F0F4F8;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--dg-navy);
+    padding: 28px 32px;
+    text-align: center;
+  }
+  .header-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--dg-white);
+    text-decoration: none;
+    margin-bottom: 16px;
+  }
+  .logo-mark {
+    width: 38px;
+    height: 38px;
+    background: var(--dg-blue);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: white;
+  }
+  .logo-text {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+  }
+  .header h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--dg-white);
+    margin-bottom: 6px;
+  }
+  .header p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* ── Main ── */
+  .main {
+    flex: 1;
+    max-width: 720px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 36px 24px;
+  }
+
+  .section-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--dg-text-light);
+    margin-bottom: 14px;
+    padding-left: 4px;
+  }
+
+  /* ── Resource cards ── */
+  .resource-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: var(--dg-white);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    margin-bottom: 14px;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s, transform 0.15s, border-color 0.2s;
+  }
+  .resource-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    border-color: var(--dg-blue);
+  }
+
+  .resource-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .resource-icon.meta {
+    background: linear-gradient(135deg, #0082FB, #00C6FF);
+  }
+  .resource-icon.google {
+    background: linear-gradient(135deg, #4285F4, #34A853);
+  }
+  .resource-icon.general {
+    background: linear-gradient(135deg, var(--dg-blue), var(--dg-mid-blue));
+  }
+  .resource-icon svg { color: white; }
+
+  .resource-info { flex: 1; min-width: 0; }
+  .resource-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--dg-text);
+    margin-bottom: 2px;
+  }
+  .resource-desc {
+    font-size: 13.5px;
+    color: var(--dg-text-light);
+  }
+  .resource-tag {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .resource-tag.meta-tag {
+    background: #EBF5FF;
+    color: #0068CC;
+  }
+  .resource-tag.google-tag {
+    background: #E8F5E9;
+    color: #2E7D32;
+  }
+
+  .resource-arrow {
+    flex-shrink: 0;
+    color: var(--dg-border);
+    transition: color 0.2s, transform 0.2s;
+  }
+  .resource-card:hover .resource-arrow {
+    color: var(--dg-blue);
+    transform: translateX(3px);
+  }
+
+  /* ── Empty state ── */
+  .empty-note {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--dg-text-light);
+    font-size: 14px;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--dg-text-light);
+    font-size: 12.5px;
+    border-top: 1px solid var(--dg-border);
+    margin-top: auto;
+  }
+  .footer a { color: var(--dg-blue); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+
+  /* ── Mobile ── */
+  @media (max-width: 640px) {
+    .header { padding: 24px 20px; }
+    .header h1 { font-size: 22px; }
+    .main { padding: 28px 16px; }
+    .resource-card { padding: 18px 16px; gap: 14px; }
+    .resource-icon { width: 42px; height: 42px; }
+    .resource-tag { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════ HEADER ════════ -->
+<div class="header">
+  <div class="header-inner">
+    <a href="https://digitalgiants.com.au" class="logo" target="_blank">
+      <div class="logo-mark">DG</div>
+      <div class="logo-text">Digital Giants</div>
+    </a>
+    <h1>Client Resources</h1>
+    <p>Setup guides and onboarding documents for Digital Giants clients</p>
+  </div>
+</div>
+
+<!-- ════════ MAIN ════════ -->
+<div class="main">
+
+  <div class="section-label">Meta Ads — Setup Guides</div>
+
+  <a href="meta-business-setup-lead-gen.html" class="resource-card">
+    <div class="resource-icon meta">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+    </div>
+    <div class="resource-info">
+      <div class="resource-title">Meta Business Setup — Lead Generation</div>
+      <div class="resource-desc">For clients where Digital Giants builds the landing page. 10 steps, ~30 min.</div>
+    </div>
+    <span class="resource-tag meta-tag">Meta</span>
+    <svg class="resource-arrow" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  </a>
+
+  <a href="meta-business-setup-guide.html" class="resource-card">
+    <div class="resource-icon meta">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    </div>
+    <div class="resource-info">
+      <div class="resource-title">Meta Business Setup — Shopify / Ecommerce</div>
+      <div class="resource-desc">For clients with an existing Shopify or ecommerce store. 12 steps, ~45 min.</div>
+    </div>
+    <span class="resource-tag meta-tag">Meta</span>
+    <svg class="resource-arrow" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  </a>
+
+  <!--
+  ┌─────────────────────────────────────────────┐
+  │  ADD MORE RESOURCES HERE                    │
+  │  Copy a resource-card block above and       │
+  │  update the href, title, description,       │
+  │  and icon. Use these icon classes:          │
+  │    .meta    = blue gradient (Meta guides)   │
+  │    .google  = green gradient (Google guides) │
+  │    .general = brand blue (other guides)     │
+  │  And these tag classes:                     │
+  │    .meta-tag   = blue tag                   │
+  │    .google-tag = green tag                  │
+  └─────────────────────────────────────────────┘
+  -->
+
+</div>
+
+<!-- ════════ FOOTER ════════ -->
+<div class="footer">
+  <p>&copy; 2026 <a href="https://digitalgiants.com.au" target="_blank">Digital Giants</a> &nbsp;·&nbsp; <a href="mailto:info@digitalgiants.com.au">info@digitalgiants.com.au</a></p>
+  <p style="margin-top: 4px; opacity: 0.6;">This page is for Digital Giants clients only.</p>
+</div>
+
+</body>
+</html>
